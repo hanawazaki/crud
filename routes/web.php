@@ -17,7 +17,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::resource("/", MemberController::class);
+Route::get('/', function () {
+    return redirect('/member');
+});
+
+Route::resource("/member", MemberController::class);
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
