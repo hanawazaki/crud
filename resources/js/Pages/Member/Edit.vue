@@ -52,11 +52,18 @@
             </div>
             <div class="flex gap-2 justify-end">
                 <button
+                    type="button"
+                    class="btn btn-secondary w-32"
+                    @click="router.visit('/member')"
+                >
+                    Kembali
+                </button>
+                <button
                     type="submit"
                     v-if="!isSubmitted"
                     class="btn btn-primary w-32"
                 >
-                    Simpan
+                    Ubah
                 </button>
                 <button type="button" v-else class="btn btn-primary w-32">
                     <Loader />
@@ -68,11 +75,11 @@
 
 <script setup>
 import { ref } from "vue";
-import InputText from "../../Components/Custom/InputText.vue";
-import SelectInput from "../../Components/Custom/SelectInput.vue";
+import InputText from "../../components/custom/inputtext.vue";
+import SelectInput from "../../components/custom/selectinput.vue";
 import Loader from "../../Components/Custom/Loader.vue";
-import CustomRadioInput from "../../Components/Custom/CustomRadioInput.vue";
-import { Link, useForm } from "@inertiajs/vue3";
+import CustomRadioInput from "../../components/custom/customRadioinput.vue";
+import { Link, useForm, router } from "@inertiajs/vue3";
 import MainLayout from "../../Layouts/MainLayout.vue";
 
 const props = defineProps({
