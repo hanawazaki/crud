@@ -51,8 +51,6 @@ const props = defineProps({
 
 const selectedOption = ref(props.modelValue);
 
-console.log(props);
-
 watchEffect(() => {
     emit("update:modelValue", selectedOption.value);
 });

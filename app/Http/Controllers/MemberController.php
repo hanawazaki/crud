@@ -14,9 +14,8 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->input('per_page', 10);
+        $perPage = $request->input('per_page', 5);
         $members = Member::latest()->paginate($perPage);
-        // dd($members);
 
         return inertia("Member/Index", [
             "members" => $members

@@ -32,10 +32,8 @@
                 </Link>
             </div>
         </div>
-        <!-- Table -->
         <div class="overflow-x-auto">
             <table class="table">
-                <!-- head -->
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -46,16 +44,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- row 1 -->
-                    <tr v-for="item in filteredData" :key="item.id">
+                    <tr
+                        v-if="props.members.data.length"
+                        v-for="item in filteredData"
+                        :key="item.id"
+                    >
                         <td>
                             <div class="flex items-center gap-3">
                                 <div class="avatar">
                                     <div class="mask mask-squircle w-12 h-12">
-                                        <img
-                                            src="https://daisyui.com/tailwind-css-component-profile-2@56w.png"
-                                            alt="Avatar Tailwind CSS Component"
-                                        />
+                                        <CustomAvatar :gender="item.gender" />
                                     </div>
                                 </div>
                                 <div>
@@ -98,15 +96,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex justify-center my-5">
-            <div class="join">
-                <button class="join-item btn">1</button>
-                <button class="join-item btn btn-active">2</button>
-                <button class="join-item btn">3</button>
-                <button class="join-item btn">4</button>
-            </div>
-        </div>
-        <!--  -->
+        <Pagination
+            :items="props.members"
+            v-model:current-page="props.members.current_page"
+            @update:current-page="fetchMembers"
+        />
     </MainLayout>
 </template>
 
@@ -114,6 +108,8 @@
 import { Head, Link, router } from "@inertiajs/vue3";
 import { ref, onMounted, computed } from "vue";
 import MainLayout from "../../Layouts/MainLayout.vue";
+import Pagination from "../../components/custom/pagination.vue";
+import CustomAvatar from "../../Components/Custom/CustomAvatar.vue";
 
 const props = defineProps({
     members: {
@@ -122,7 +118,6 @@ const props = defineProps({
     },
 });
 const search = ref("");
-const createModal = ref(false);
 
 const filteredData = computed(() => {
     return props.members.data.filter((member) =>
@@ -138,11 +133,9 @@ const deleteData = (id) => {
     }
 };
 
-function getPage(page) {
-    router.visit(`/members?page=${page}`);
+function fetchMembers(page) {
+    router.visit(`/member?page=${page}`);
 }
-
-console.log(props.members.data);
 </script>
 
 <style scoped></style>

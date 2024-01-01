@@ -9,13 +9,40 @@
         <div class="flex justify-between">
             <h3 class="font-bold text-lg">View Data</h3>
         </div>
-        <div class="grid grid-cols-2 gap-3">
-            <label>{{ props.member.name }}</label>
-            <label>{{ props.member.email }}</label>
-            <label>{{ props.member.phone }}</label>
-            <label>{{ props.member.gender }}</label>
-            <label>{{ props.member.status }}</label>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>
+                        <label>{{ props.member.name }}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <th>
+                        <label>{{ props.member.email }}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <th>
+                        <label>{{ props.member.phone }}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <th>
+                        <label>{{ props.member.gender }}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <th>
+                        <label>{{ props.member.status }}</label>
+                    </th>
+                </tr>
+            </thead>
+        </table>
     </MainLayout>
 </template>
 
