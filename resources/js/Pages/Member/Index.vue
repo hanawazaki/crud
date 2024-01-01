@@ -93,6 +93,13 @@
                             </button>
                         </td>
                     </tr>
+                    <tr v-else>
+                        <td colspan="5">
+                            <h5 class="text-center font-mono my-5">
+                                Tidak ada data
+                            </h5>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
